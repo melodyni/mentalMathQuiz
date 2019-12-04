@@ -11,11 +11,13 @@ const isCorrect = function(answer, questionList, qNo) {
 
 const main = function(questionList) {
   let qNo = 0;
+  let scores = 0;
   displayQuestion(questionList, qNo);
   stdin.on("data", answer => {
-    let message = "Incorrect Answer";
+    let message = `Incorrect Answer\t -------> scores:${scores}`;
     if (isCorrect(answer, questionList, qNo)) {
-      message = "Correct Answer";
+      scores++;
+      message = `Correct Answer\t ------> scores:${scores}`;
     }
     console.log(message);
     displayQuestion(questionList, ++qNo);
@@ -27,4 +29,3 @@ const main = function(questionList) {
 };
 
 main(questionList);
-
